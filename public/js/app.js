@@ -5024,7 +5024,7 @@ function MLV(_ref) {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_player__WEBPACK_IMPORTED_MODULE_0__["default"], {
       width: '100%',
       height: '480px',
-      url: "".concat(config.assetUrl, "storage/placeholder.mp4"),
+      url: task.media_url,
       controls: true
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
       className: "p-6",
