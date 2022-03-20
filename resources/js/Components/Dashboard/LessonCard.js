@@ -17,7 +17,9 @@ export default function LessonCard({ lesson }) {
       </div>
       <div className="flex-initial w-3/4 px-6 py-6">
         <h2 className='text-2xl font-bold capitalize mb-3'>{ lesson.name }</h2> 
-        <p className="mb-3">{ lesson.description }</p>
+        <div dangerouslySetInnerHTML={{
+          __html: lesson.description, 
+        }}></div>
         <Button 
           onClick={(event) => goToLesson(event)}
           type='button'>

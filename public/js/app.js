@@ -4383,9 +4383,10 @@ function LessonCard(_ref) {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h2", {
         className: "text-2xl font-bold capitalize mb-3",
         children: lesson.name
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
-        className: "mb-3",
-        children: lesson.description
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+        dangerouslySetInnerHTML: {
+          __html: lesson.description
+        }
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Button__WEBPACK_IMPORTED_MODULE_2__["default"], {
         onClick: function onClick(event) {
           return goToLesson(event);
@@ -5031,8 +5032,10 @@ function MLV(_ref) {
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h3", {
         className: "font-bold mb-3 text-2xl capitalize mb-3",
         children: task.name
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-        children: task.description
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        dangerouslySetInnerHTML: {
+          __html: task.description
+        }
       })]
     })]
   });

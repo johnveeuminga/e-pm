@@ -10,7 +10,9 @@ export default function MLV({ config, task }) {
         controls={true}/>
         <div className="p-6">
           <h3 className="font-bold mb-3 text-2xl capitalize mb-3">{task.name}</h3>
-          <p>{ task.description }</p> 
+          <div dangerouslySetInnerHTML={{
+            __html: task.description,
+          }}></div>
       </div>
     </div>
   )
