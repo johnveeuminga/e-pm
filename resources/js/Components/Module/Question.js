@@ -34,7 +34,10 @@ export default function Question({
       {
         question.question_type_id == 1 &&
         <div className="question-input mb-3">
-          <label>{ question.question }</label>
+          <div dangerouslySetInnerHTML={{
+            __html: question.question,
+          }}></div>
+          <label>Answer:</label>
           <Input
             type='text' 
             name={`input-${question.id}`}
@@ -47,7 +50,7 @@ export default function Question({
       {
         question.question_type_id == 2 &&
           <div className='mb-3'>
-            <p>{ question.question }</p>
+            <div dangerouslySetInnerHTML={{ __html: question.question }}></div>
             {
               question.question_options.map(option => ( 
                   <div className="flex align-center">
