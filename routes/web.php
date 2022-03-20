@@ -23,6 +23,8 @@ Route::get('/', function () {
     return redirect()->route('login');
 });
 
+Route::get('/test', [ModuleController::class, 'index']);
+
 Route::group([
     'prefix' => 'dashboard'
 ], function() {

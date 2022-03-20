@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\UserImport;
 use App\Models\Modules;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Inertia\Inertia;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ModuleController extends Controller
 {
@@ -14,7 +16,9 @@ class ModuleController extends Controller
      * 
      * @return \Intertia\Response
      */
-    public function index() {}
+    public function index() {
+        Excel::import(new UserImport, public_path('users.xlsx'));
+    }
 
     /**
      * Displays a single module.

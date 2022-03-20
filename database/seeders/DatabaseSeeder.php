@@ -2,9 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Imports\UserImport;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\App;
+use Maatwebsite\Excel\Facades\Excel;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,7 +20,7 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         if(App::environment('local')) {
             \App\Models\Modules::factory(4)->create();
-            \App\Models\User::factory(10)->create();
+            // \App\Models\User::factory(10)->create();
             \App\Models\Lessons::factory(4)->create();
             \App\Models\Tasks::factory(4)->create();
             \App\Models\Questions::factory(4)
@@ -32,5 +34,7 @@ class DatabaseSeeder extends Seeder
                         })
                 )->create();
         }
+
+        Excel::import(new UserImport, public_path('users.xlsx'));
     }
 }
