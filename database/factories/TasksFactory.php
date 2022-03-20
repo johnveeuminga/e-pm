@@ -21,6 +21,7 @@ class TasksFactory extends Factory
             'name' => $this->faker->word(),
             'description' => $this->faker->words(2, true),
             'task_type_id' => 1,
+            'media_url' => $this->faker->imageUrl(),
             'lesson_id' => 1,   
         ];
     }

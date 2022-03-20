@@ -640,6 +640,14 @@ select {
   margin-left: -0.75rem;
   margin-right: -0.75rem;
 }
+.mx-3 {
+  margin-left: 0.75rem;
+  margin-right: 0.75rem;
+}
+.my-9 {
+  margin-top: 2.25rem;
+  margin-bottom: 2.25rem;
+}
 .ml-3 {
   margin-left: 0.75rem;
 }
@@ -805,6 +813,12 @@ select {
 .w-12 {
   width: 3rem;
 }
+.w-36 {
+  width: 9rem;
+}
+.w-96 {
+  width: 24rem;
+}
 .max-w-7xl {
   max-width: 80rem;
 }
@@ -813,6 +827,9 @@ select {
 }
 .max-w-xl {
   max-width: 36rem;
+}
+.max-w-full {
+  max-width: 100%;
 }
 .flex-1 {
   flex: 1 1 0%;

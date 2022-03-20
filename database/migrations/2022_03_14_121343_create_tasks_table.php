@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('media_url');
             $table->longText('description');
             $table->unsignedInteger('lesson_id');
             $table->unsignedInteger('parent_id')->nullable();

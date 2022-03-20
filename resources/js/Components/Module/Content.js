@@ -45,6 +45,14 @@ export default function Content({ task, questions, config }) {
               }}
               className='mb-3'>
             </div>
+            {
+              task.media_url &&
+                <img 
+                  src={task.media_url} 
+                  className={'mx-auto max-w-full block'}
+                  style={{ width: '500px'}}/>
+            }
+            <h2 className="text-xl font-bold my-9">Questions</h2>
             { 
               questions.map(question => (
                 <div>

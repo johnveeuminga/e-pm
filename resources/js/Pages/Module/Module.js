@@ -30,6 +30,7 @@ export default function Module({ module, lessons, auth }) {
             <ReactPlayer 
               url={module.introduction_url}
               width={'100%'}
+              controls={true}
               height={'480px'}/>
         </div>
         </div>
