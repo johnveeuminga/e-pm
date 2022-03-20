@@ -52,29 +52,31 @@ export default function Content({ task, questions, config }) {
                   className={'mx-auto max-w-full block'}
                   style={{ width: '500px'}}/>
             }
-            <h2 className="text-xl font-bold my-9">Questions</h2>
             { 
               questions.map(question => (
                 <div>
                   <div className="py-6 border-t border-gray-200 border-b relative">
-                    <div className="absolute top-2 right-0">
-                      <Button 
-                        onClick={()=> handleBulbClicked({
-                          type: 'tip',
-                          content: question.hint_tips,
-                        })}
-                        className="px-2 bg-yellow-400 rounded">
-                        <LightBulbIcon className="w-5"/>
-                      </Button>
-                      <Button 
-                        onClick={()=> handleBulbClicked({
-                          type: 'strategy',
-                          content: question.hint_strategy,
-                        })}
-                        className="px-2 ml-2 bg-blue-400 rounded">
-                        <CogIcon className="w-5"/>
-                      </Button>
-                    </div>
+                    {
+                      question.hint_strategy && question.hint_tips &&
+                      <div className="text-right top-2 right-0">
+                        <Button 
+                          onClick={()=> handleBulbClicked({
+                            type: 'tip',
+                            content: question.hint_tips,
+                          })}
+                          className="px-2 bg-yellow-400 rounded">
+                          <LightBulbIcon className="w-5"/>
+                        </Button>
+                        <Button 
+                          onClick={()=> handleBulbClicked({
+                            type: 'strategy',
+                            content: question.hint_strategy,
+                          })}
+                          className="px-2 ml-2 bg-blue-400 rounded">
+                          <CogIcon className="w-5"/>
+                        </Button>
+                      </div>
+                    }
                     <Question 
                       question={question} />
                     {
@@ -97,8 +99,16 @@ export default function Content({ task, questions, config }) {
           <div 
             dangerouslySetInnerHTML={{
               __html: task.description
-            }}>
+            }}
+            className='mb-3'>
           </div>
+          {
+              task.media_url &&
+                <img 
+                  src={task.media_url} 
+                  className={'mx-auto max-w-full block'}
+                  style={{ width: '500px'}}/>
+            }
         </div>
       )
 

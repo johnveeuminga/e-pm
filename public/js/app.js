@@ -4914,15 +4914,12 @@ function Content(_ref) {
         style: {
           width: '500px'
         }
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
-        className: "text-xl font-bold my-9",
-        children: "Questions"
       }), questions.map(function (question) {
         return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
             className: "py-6 border-t border-gray-200 border-b relative",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-              className: "absolute top-2 right-0",
+            children: [question.hint_strategy && question.hint_tips && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+              className: "text-right top-2 right-0",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Button__WEBPACK_IMPORTED_MODULE_1__["default"], {
                 onClick: function onClick() {
                   return handleBulbClicked({
@@ -4965,6 +4962,13 @@ function Content(_ref) {
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
         dangerouslySetInnerHTML: {
           __html: task.description
+        },
+        className: "mb-3"
+      }), task.media_url && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
+        src: task.media_url,
+        className: 'mx-auto max-w-full block',
+        style: {
+          width: '500px'
         }
       })]
     });

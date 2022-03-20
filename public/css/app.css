@@ -1152,6 +1152,9 @@ select {
 .text-center {
   text-align: center;
 }
+.text-right {
+  text-align: right;
+}
 .align-bottom {
   vertical-align: bottom;
 }
