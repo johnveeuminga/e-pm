@@ -37,7 +37,7 @@ export default function Content({ task, questions, config }) {
     else if(task.task_type_id == 2)
         return (
           <div
-            className='p-12'>
+            className='p-12 py-3 '>
             <h2 class='text-2xl font-bold capitalize mb-3'>{task.name}</h2>
             <div 
               dangerouslySetInnerHTML={{

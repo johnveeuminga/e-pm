@@ -13,6 +13,7 @@ export default function Input({
     checked,
     id,
     disabled,
+    prefix,
 }) {
     const input = useRef();
 
@@ -23,7 +24,7 @@ export default function Input({
     }, []);
 
     return (
-        <div className={`flex flex-col items-start ${containerClassName}`}>
+        <div className={`inline-flex flex-col items-start ${containerClassName} relative`}>
             <input
                 type={type}
                 name={name}
@@ -40,6 +41,12 @@ export default function Input({
                 required={required}
                 onChange={(e) => handleChange(e)}
             />
+            { 
+                prefix && 
+                <div className='absolute inset-y-0 right-0 flex items-center pointer-events-none p-3 text-gray-500 sm:text-sm'>
+                    { prefix }
+                </div>
+            }
         </div>
     );
 }

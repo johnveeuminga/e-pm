@@ -74,7 +74,6 @@ class ModuleLessonsController extends Controller
                     $q->where('user_id', $user->id);
                 },
                 'questionOptions' => function($q) use ($user) {
-
                     $questions_table = DB::table('questions')
                         ->selectRaw('questions.*, CASE WHEN true THEN 1 ELSE 0 END as `should_show_answers`')
                         ->whereIn('id', function($q) use ($user){
@@ -111,7 +110,7 @@ class ModuleLessonsController extends Controller
                 }
             ])
             ->get();
-        
+
         return Inertia::render('Module/Lesson', [
             'lesson' => $lesson,
             'task' => $task,

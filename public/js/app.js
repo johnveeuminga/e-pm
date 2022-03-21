@@ -4614,6 +4614,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
+
 function Input(_ref) {
   var _ref$type = _ref.type,
       type = _ref$type === void 0 ? 'text' : _ref$type,
@@ -4627,16 +4628,17 @@ function Input(_ref) {
       containerClassName = _ref.containerClassName,
       checked = _ref.checked,
       id = _ref.id,
-      disabled = _ref.disabled;
+      disabled = _ref.disabled,
+      prefix = _ref.prefix;
   var input = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)();
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     if (isFocused) {
       input.current.focus();
     }
   }, []);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-    className: "flex flex-col items-start ".concat(containerClassName),
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+    className: "inline-flex flex-col items-start ".concat(containerClassName, " relative"),
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
       type: type,
       name: name,
       disabled: disabled,
@@ -4650,7 +4652,10 @@ function Input(_ref) {
       onChange: function onChange(e) {
         return handleChange(e);
       }
-    })
+    }), prefix && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "absolute inset-y-0 right-0 flex items-center pointer-events-none p-3 text-gray-500 sm:text-sm",
+      children: prefix
+    })]
   });
 }
 
@@ -4899,7 +4904,7 @@ function Content(_ref) {
       config: config,
       task: task
     });else if (task.task_type_id == 2) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-      className: "p-12",
+      className: "p-12 py-3 ",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("h2", {
         "class": "text-2xl font-bold capitalize mb-3",
         children: task.name
@@ -5097,6 +5102,8 @@ function Question(_ref) {
     _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_0__.Inertia.post(route('question.attempt', question.id), {
       question_id: question.id,
       answer: value
+    }, {
+      preserveScroll: true
     });
   }
 
@@ -5118,6 +5125,7 @@ function Question(_ref) {
           __html: question.question
         }
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+        className: "mr-3",
         children: "Answer:"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_Components_Input__WEBPACK_IMPORTED_MODULE_2__["default"], {
         type: "text",
@@ -5127,7 +5135,8 @@ function Question(_ref) {
         }).name,
         disabled: isShowCorrectOrMaxAttempt() ? false : true,
         className: "".concat(isShowCorrectOrMaxAttempt() ? '' : 'opacity-30'),
-        handleChange: onHandleChange
+        handleChange: onHandleChange,
+        prefix: question.input_prefix
       })]
     }), question.question_type_id == 2 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
       className: "mb-3",
@@ -5165,6 +5174,16 @@ function Question(_ref) {
         return submitQuestion();
       },
       children: "Submit"
+    }), !isShowCorrectOrMaxAttempt() && question.explanation && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+      className: "p-6 border border-gray-400",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+        className: "font-bold text-blue-400 mb-3",
+        children: "Explanation: "
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        dangerouslySetInnerHTML: {
+          __html: question.explanation
+        }
+      })]
     })]
   });
 }
@@ -6194,14 +6213,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Components_Modal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/Components/Modal */ "./resources/js/Components/Modal.js");
 /* harmony import */ var _Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Layouts/Authenticated */ "./resources/js/Layouts/Authenticated.js");
-/* harmony import */ var _heroicons_react_outline__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @heroicons/react/outline */ "./node_modules/@heroicons/react/outline/esm/ExclamationIcon.js");
-/* harmony import */ var _heroicons_react_outline__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @heroicons/react/outline */ "./node_modules/@heroicons/react/outline/esm/CheckIcon.js");
+/* harmony import */ var _heroicons_react_outline__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @heroicons/react/outline */ "./node_modules/@heroicons/react/outline/esm/ChevronLeftIcon.js");
+/* harmony import */ var _heroicons_react_outline__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @heroicons/react/outline */ "./node_modules/@heroicons/react/outline/esm/ExclamationIcon.js");
+/* harmony import */ var _heroicons_react_outline__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @heroicons/react/outline */ "./node_modules/@heroicons/react/outline/esm/CheckIcon.js");
 /* harmony import */ var _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/inertia */ "./node_modules/@inertiajs/inertia/dist/index.js");
 /* harmony import */ var _inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @inertiajs/inertia-react */ "./node_modules/@inertiajs/inertia-react/dist/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_player__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-player */ "./node_modules/react-player/lib/index.js");
-/* harmony import */ var _Components_Module_Content__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../Components/Module/Content */ "./resources/js/Components/Module/Content.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_player__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-player */ "./node_modules/react-player/lib/index.js");
+/* harmony import */ var _Components_Module_Content__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../Components/Module/Content */ "./resources/js/Components/Module/Content.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -6224,6 +6246,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 function Lesson(_ref) {
   var auth = _ref.auth,
       lesson = _ref.lesson,
@@ -6234,75 +6257,121 @@ function Lesson(_ref) {
       not_allowed = _ref.not_allowed,
       selected_task_id = _ref.selected_task_id,
       message = _ref.message;
+  var page = (0,_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_3__.usePage)();
+  console.log(page);
 
   function handleTaskClick(task) {
     _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_2__.Inertia.get(route('module.lesson.task.single', [lesson.module_id, lesson.id, task.id]));
   }
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_4__.useState)(false),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_5__.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
       openModal = _useState2[0],
       setOpenModal = _useState2[1];
 
-  (0,react__WEBPACK_IMPORTED_MODULE_4__.useEffect)(function () {
+  (0,react__WEBPACK_IMPORTED_MODULE_5__.useEffect)(function () {
     if (flash && flash.message) setOpenModal(true);
   }, [flash]);
+  (0,react__WEBPACK_IMPORTED_MODULE_5__.useEffect)(function () {
+    var interval;
+
+    if (task && !not_allowed) {
+      interval = setInterval(function () {
+        axios__WEBPACK_IMPORTED_MODULE_4___default().post(route('logs.store'), {
+          user: auth.user.id,
+          url: page.url
+        });
+      }, 10000);
+    }
+
+    return function () {
+      clearTimeout(interval);
+    };
+  }, []);
 
   function handleClose(val) {
     setOpenModal(false);
   }
 
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)(_Layouts_Authenticated__WEBPACK_IMPORTED_MODULE_1__["default"], {
     auth: auth,
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_3__.Head, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_3__.Head, {
       title: lesson.name
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
       className: "flex",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
         className: "flex-initial w-3/4",
-        children: [not_allowed && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+          className: "py-3 px-4",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_3__.Link, {
+            href: route('module.single', [lesson.module_id]),
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("span", {
+              className: "text-sm inline-flex items-center",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_heroicons_react_outline__WEBPACK_IMPORTED_MODULE_9__["default"], {
+                className: "w-4 inline-block mr-1"
+              }), "Back to Module"]
+            })
+          })
+        }), not_allowed && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
           className: "flex flex-col align-center h-96 justify-center items-center text-center",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("img", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("img", {
             src: "/images/not-allowed.png",
             className: "w-56 mb-4 mt-8"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("p", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
             children: "Sorry! You are not allowed to view this task."
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("p", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
             children: message
           })]
-        }), task && !not_allowed && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Module_Content__WEBPACK_IMPORTED_MODULE_6__["default"], {
+        }), task && !not_allowed && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Components_Module_Content__WEBPACK_IMPORTED_MODULE_7__["default"], {
           config: config,
           task: task,
           questions: questions
-        }), !task && !not_allowed && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("p", {
-          children: "Introduction"
+        }), !task && !not_allowed && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+          className: "py-8",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+            className: "max-w-7xl mx-auto sm:px-6 lg:px-8",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
+              className: "border-gray-200",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
+                className: "mb-4 text-2xl text-bold",
+                children: lesson.name
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+                dangerouslySetInnerHTML: {
+                  __html: lesson.description
+                }
+              })]
+            })
+          })
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
         className: "flex-initial w-1/4 min-h-screen overflow-scroll bg-white",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
           className: "p-6 border-b border-solid border-gray-300 uppercase font-bold",
-          children: lesson.name
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_inertiajs_inertia_react__WEBPACK_IMPORTED_MODULE_3__.Link, {
+            href: route('module.lesson.single', [lesson.module_id, lesson.id]),
+            children: lesson.name
+          })
         }), lesson.tasks.map(function (lessonTask) {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
             onClick: function onClick() {
               return handleTaskClick(lessonTask);
             },
             className: "p-6 px-8 border-b border-solid border-gray-200 cursor-pointer transition ease-in-out hover:bg-gray-100 duration-300".concat(selected_task_id == lessonTask.id ? ' bg-gray-100' : ''),
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
               className: "flex align-center",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
                 className: "mr-6",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("span", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("span", {
                   className: "font-bold",
                   children: "<"
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
                 className: "capitalize",
                 children: lessonTask.name
               })]
             })
           });
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Components_Modal__WEBPACK_IMPORTED_MODULE_0__["default"], {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_Components_Modal__WEBPACK_IMPORTED_MODULE_0__["default"], {
           isOpened: openModal,
           onClose: function onClose(val) {
             return handleClose(val);
@@ -6311,15 +6380,15 @@ function Lesson(_ref) {
             title: flash.message && flash.message.correct ? "Congratulations!" : "Sorry",
             content: flash.message && !flash.message.correct ? "Understand what is being asked in the problem. Check the bulb and gear icons to guide you through solving the problem." : "Your answer is correct!"
           },
-          icon: flash.message && !flash.message.correct ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+          icon: flash.message && !flash.message.correct ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
             className: "mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_heroicons_react_outline__WEBPACK_IMPORTED_MODULE_8__["default"], {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_heroicons_react_outline__WEBPACK_IMPORTED_MODULE_10__["default"], {
               className: "h-6 w-6 text-red-600",
               "aria-hidden": "true"
             })
-          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
             className: "mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-green-100 sm:mx-0 sm:h-10 sm:w-10",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_heroicons_react_outline__WEBPACK_IMPORTED_MODULE_9__["default"], {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_heroicons_react_outline__WEBPACK_IMPORTED_MODULE_11__["default"], {
               className: "h-6 w-6 text-red-600",
               "aria-hidden": "true"
             })
@@ -6845,6 +6914,13 @@ window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+var token = document.head.querySelector('meta[name="csrf-token"]');
+
+if (token) {
+  window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+} else {
+  console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+}
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
@@ -65060,6 +65136,41 @@ const ForwardRef = react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(CheckIcon);
 
 /***/ }),
 
+/***/ "./node_modules/@heroicons/react/outline/esm/ChevronLeftIcon.js":
+/*!**********************************************************************!*\
+  !*** ./node_modules/@heroicons/react/outline/esm/ChevronLeftIcon.js ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+
+function ChevronLeftIcon(props, svgRef) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("svg", Object.assign({
+    xmlns: "http://www.w3.org/2000/svg",
+    fill: "none",
+    viewBox: "0 0 24 24",
+    strokeWidth: 2,
+    stroke: "currentColor",
+    "aria-hidden": "true",
+    ref: svgRef
+  }, props), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("path", {
+    strokeLinecap: "round",
+    strokeLinejoin: "round",
+    d: "M15 19l-7-7 7-7"
+  }));
+}
+
+const ForwardRef = react__WEBPACK_IMPORTED_MODULE_0__.forwardRef(ChevronLeftIcon);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ForwardRef);
+
+/***/ }),
+
 /***/ "./node_modules/@heroicons/react/outline/esm/CogIcon.js":
 /*!**************************************************************!*\
   !*** ./node_modules/@heroicons/react/outline/esm/CogIcon.js ***!
@@ -65242,6 +65353,18 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /******/ 				}
 /******/ 			}
 /******/ 			return result;
+/******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/compat get default export */
+/******/ 	(() => {
+/******/ 		// getDefaultExport function for compatibility with non-harmony modules
+/******/ 		__webpack_require__.n = (module) => {
+/******/ 			var getter = module && module.__esModule ?
+/******/ 				() => (module['default']) :
+/******/ 				() => (module);
+/******/ 			__webpack_require__.d(getter, { a: getter });
+/******/ 			return getter;
 /******/ 		};
 /******/ 	})();
 /******/ 	

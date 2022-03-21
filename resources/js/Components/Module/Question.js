@@ -17,6 +17,8 @@ export default function Question({
     Inertia.post(route('question.attempt', question.id), {
       question_id: question.id,
       answer: value,
+    }, {
+      preserveScroll: true,
     });
   }
 
@@ -37,14 +39,15 @@ export default function Question({
           <div dangerouslySetInnerHTML={{
             __html: question.question,
           }}></div>
-          <label>Answer:</label>
+          <label className='mr-3'>Answer:</label>
           <Input
             type='text' 
             name={`input-${question.id}`}
             value={isShowCorrectOrMaxAttempt() ? value : question.question_options.find(opt => opt.show_correct == 1).name}
             disabled={isShowCorrectOrMaxAttempt() ? false : true}
             className={`${isShowCorrectOrMaxAttempt() ? '' : 'opacity-30'}`}
-            handleChange={onHandleChange}/>
+            handleChange={onHandleChange}
+            prefix={question.input_prefix}/>
         </div> 
       }
       {
@@ -87,6 +90,13 @@ export default function Question({
             onClick={() => submitQuestion() }>
               Submit
           </Button> 
+      }
+      {
+        !isShowCorrectOrMaxAttempt() && question.explanation &&
+          <div className='p-6 border border-gray-400'>
+            <p className='font-bold text-blue-400 mb-3'>Explanation: </p>
+            <div dangerouslySetInnerHTML={{ __html: question.explanation }}></div>
+          </div>
       }
     </div>
   )

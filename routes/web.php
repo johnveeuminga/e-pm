@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LogsController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\ModuleLessonsController;
 use App\Http\Controllers\QuestionAttemptController;
@@ -63,6 +64,13 @@ Route::group([
 ], function() {
     Route::post('{question}/attempt', [QuestionAttemptController::class, 'attempt'])
         ->name('question.attempt');
+});
+
+Route::group([
+    'prefix' => 'logs'
+], function() {
+    Route::post('/', [LogsController::class, 'store'])
+        ->name('logs.store');
 });
 
 require __DIR__.'/auth.php';

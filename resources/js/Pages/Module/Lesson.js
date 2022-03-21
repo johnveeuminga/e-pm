@@ -1,13 +1,17 @@
 import Modal from "@/Components/Modal";
 import Authenticated from "@/Layouts/Authenticated";
-import { ExclamationIcon, CheckIcon } from "@heroicons/react/outline";
+import { ExclamationIcon, CheckIcon, ChevronDoubleRightIcon, ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/outline";
 import { Inertia } from "@inertiajs/inertia";
 import { Head, Link, usePage } from "@inertiajs/inertia-react";
+import axios from "axios";
 import { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
 import Content from "../../Components/Module/Content";
 
 export default function Lesson({ auth, lesson, config, task, questions, flash, not_allowed, selected_task_id, message }) {
+  const page = usePage(); 
+
+  console.log(page);
   function handleTaskClick(task) {
     Inertia.get(
       route('module.lesson.task.single',
@@ -20,7 +24,23 @@ export default function Lesson({ auth, lesson, config, task, questions, flash, n
   useEffect(() => {
     if(flash && flash.message)
       setOpenModal(true);
-  }, [flash])
+  }, [flash]);
+
+  useEffect(() => {
+    let interval;
+    if(task && !not_allowed)  {
+      interval = setInterval(() => {
+        axios.post(route('logs.store'), {
+          user: auth.user.id,
+          url: page.url,
+        });
+      }, 10000)
+    }
+
+    return () => {
+      clearTimeout(interval);
+    }
+  }, []);
 
   function handleClose(val) {
     setOpenModal(false);
@@ -32,6 +52,17 @@ export default function Lesson({ auth, lesson, config, task, questions, flash, n
       <Head title={lesson.name} />
       <div className="flex">
         <div className="flex-initial w-3/4">
+          {
+            <div className="py-3 px-4">
+              <Link href={route('module.single', [lesson.module_id])}>
+                <span className="text-sm inline-flex items-center">
+                  <ChevronLeftIcon className="w-4 inline-block mr-1" />
+                  Back to Module
+                </span>
+              </Link>
+              
+            </div>
+          }
           {
             not_allowed &&
               <div className="flex flex-col align-center h-96 justify-center items-center text-center">
@@ -48,11 +79,23 @@ export default function Lesson({ auth, lesson, config, task, questions, flash, n
                 task={task}
                 questions={questions}/>   
           } 
-          { !task && !not_allowed && <p>Introduction</p> }
+          { !task && !not_allowed && 
+            <div className="py-8">
+              <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                  <div className="border-gray-200">
+                    <p className='mb-4 text-2xl text-bold'>
+                      {/* <link href={route('module.lesson.single', [lesson.module_id, lesson.id ])}>{ lesson.name }</link>  */}
+                      { lesson.name }
+                    </p> 
+                    <div dangerouslySetInnerHTML={{ __html: lesson.description }}></div>
+                  </div>
+                </div>
+            </div> 
+          }
         </div>
         <div className="flex-initial w-1/4 min-h-screen overflow-scroll bg-white">
           <div className="p-6 border-b border-solid border-gray-300 uppercase font-bold">
-            { lesson.name }
+            <Link href={route('module.lesson.single', [lesson.module_id, lesson.id ])}>{ lesson.name }</Link> 
           </div>
           {
             lesson.tasks.map(lessonTask => (
