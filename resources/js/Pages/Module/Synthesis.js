@@ -34,6 +34,9 @@ export default function Synthesis({
                   width={'100%'}
                   controls={true}
                   height={'480px'}/>
+                  {
+                    
+                  }
               </div>
           }
         </div>
