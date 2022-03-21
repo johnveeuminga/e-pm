@@ -50,6 +50,7 @@ export default function Login({ status, canResetPassword }) {
                         autoComplete="username"
                         isFocused={true}
                         handleChange={onHandleChange}
+                        containerClassName={'flex w-full'}
                     />
                 </div>
 
@@ -63,6 +64,7 @@ export default function Login({ status, canResetPassword }) {
                         className="mt-1 block w-full"
                         autoComplete="current-password"
                         handleChange={onHandleChange}
+                        containerClassName={'w-full'}
                     />
                 </div>
 

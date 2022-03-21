@@ -5771,7 +5771,8 @@ function Login(_ref) {
           className: "mt-1 block w-full",
           autoComplete: "username",
           isFocused: true,
-          handleChange: onHandleChange
+          handleChange: onHandleChange,
+          containerClassName: 'flex w-full'
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
         className: "mt-4",
@@ -5784,7 +5785,8 @@ function Login(_ref) {
           value: data.password,
           className: "mt-1 block w-full",
           autoComplete: "current-password",
-          handleChange: onHandleChange
+          handleChange: onHandleChange,
+          containerClassName: 'w-full'
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
         className: "block mt-4",
