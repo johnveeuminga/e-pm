@@ -40,14 +40,14 @@ class ModuleController extends Controller
      */
     public function synthesis(Request $request, Modules $module)
     {
-        $gate = Gate::inspect('synthesis', $module);
+        // $gate = Gate::inspect('synthesis', $module);
 
-        if($gate->denied()) {
-            return Inertia::render('Module/Synthesis', [
-                'module' => $module,
-                'not_allowed' => true,
-            ]);
-        }
+        // if($gate->denied()) {
+        //     return Inertia::render('Module/Synthesis', [
+        //         'module' => $module,
+        //         'not_allowed' => true,
+        //     ]);
+        // }
 
         return Inertia::render('Module/Synthesis', [
             'module' => $module->makeVisible(['synthesis_media_url'])

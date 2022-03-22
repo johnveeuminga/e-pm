@@ -28,6 +28,7 @@ export default function Synthesis({
           }
           {
             !not_allowed &&
+            <div>
               <div className='bg-black mt-6'>
                 <ReactPlayer 
                   url={module.synthesis_media_url}
@@ -38,6 +39,8 @@ export default function Synthesis({
                     
                   }
               </div>
+              <div className="my-6 max-w-7xl mx-auto" dangerouslySetInnerHTML={{ __html: module.synthesis_content }}></div>
+            </div>
           }
         </div>
       </div>

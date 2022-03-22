@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::table('modules', function (Blueprint $table) {
             //
+            $table->longText('synthesis_content')->nullable();
+            $table->text('synthesis_short_text')->nullable();
+            $table->string('synthesis_cover_photo_url')->nullable();
         });
     }
 
@@ -27,6 +30,8 @@ return new class extends Migration
     {
         Schema::table('modules', function (Blueprint $table) {
             //
+            $table->dropColumn('synthesis_content');
+            $table->dropColumn('synthesis_short_text');
         });
     }
 };

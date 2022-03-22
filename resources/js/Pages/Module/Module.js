@@ -46,18 +46,19 @@ export default function Module({ module, lessons, auth }) {
           ) )
         }
         {
-          <div className="flex bg-white rounded-md overflow-hidden drop-shadow-md mb-4">
-              <div className='flex-initial w-1/4 rounded-l-md bg-gray-300'>
-                <div className="h-full w-full flex justify-center items-center">
+          <div className="flex bg-white rounded-md overflow-hidden drop-shadow-md mb-4 items-stretch">
+              <div className='flex-initial w-1/4 rounded-l-md bg-gray-300 a'>
+                {/* <div className="h-full w-full flex justify-center items-center">
                   <CheckCircleIcon className="w-20 h-20 text-green-600"/>
-                </div>
-                {/* <img 
-                  src={lesson.media_url}
-                  className='w-full object-cover' /> */}
+                </div> */}
+                <img 
+                  src={module.synthesis_cover_photo_url}
+                  className='w-full object-cover h-full' />
               </div>
               <div className="flex-initial w-3/4 px-6 py-6">
                 <h2 className='text-2xl font-bold capitalize mb-3'>Synthesis</h2> 
-                <p className="mb-3">Here's a summary of all the concepts tackled on the lessone above.</p>
+                {/* <p className="mb-3">Here's a summary of all the concepts tackled on the lessone above.</p> */}
+                <div className='mb-3' dangerouslySetInnerHTML={{ __html: module.synthesis_short_text  }}></div>
                 <Button 
                   onClick={(event) => goToSynthesis(event)}
                   type='button'>
