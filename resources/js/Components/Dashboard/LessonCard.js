@@ -9,8 +9,8 @@ export default function LessonCard({ lesson }) {
   }
 
   return (
-    <div className="flex bg-white rounded-md overflow-hidden drop-shadow-md mb-4">
-      <div className='flex-initial w-1/4 rounded-l-md'>
+    <div className="flex bg-white rounded-md overflow-hidden drop-shadow-md mb-4 items-stretch">
+      <div className='flex-initial w-1/4 rounded-l-md h-full'>
         <img 
           src={lesson.media_url}
           className='w-full object-cover' />
@@ -19,7 +19,7 @@ export default function LessonCard({ lesson }) {
         <h2 className='text-2xl font-bold capitalize mb-3'>{ lesson.name }</h2> 
         <div dangerouslySetInnerHTML={{
           __html: lesson.description, 
-        }}></div>
+        }} className='mb-3'></div>
         <Button 
           onClick={(event) => goToLesson(event)}
           type='button'>

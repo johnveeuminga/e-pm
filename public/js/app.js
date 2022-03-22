@@ -4371,9 +4371,9 @@ function LessonCard(_ref) {
   }
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-    className: "flex bg-white rounded-md overflow-hidden drop-shadow-md mb-4",
+    className: "flex bg-white rounded-md overflow-hidden drop-shadow-md mb-4 items-stretch",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-      className: "flex-initial w-1/4 rounded-l-md",
+      className: "flex-initial w-1/4 rounded-l-md h-full",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
         src: lesson.media_url,
         className: "w-full object-cover"
@@ -4386,7 +4386,8 @@ function LessonCard(_ref) {
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
         dangerouslySetInnerHTML: {
           __html: lesson.description
-        }
+        },
+        className: "mb-3"
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Button__WEBPACK_IMPORTED_MODULE_2__["default"], {
         onClick: function onClick(event) {
           return goToLesson(event);
@@ -6345,7 +6346,7 @@ function Lesson(_ref) {
                 className: "text-center",
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("img", {
                   src: lesson.media_url,
-                  className: 'w-96 max-w-full',
+                  className: 'w-96 max-w-full mx-auto',
                   alt: ""
                 })
               })]
