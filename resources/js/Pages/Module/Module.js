@@ -22,7 +22,7 @@ export default function Module({ module, lessons, auth }) {
       <Head title={module.name} />
       <div className='py-12'>
         <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 mb-3">
-          <h1 className="font-bold capitalize text-2xl mb-3">{ module.name }</h1>
+          <h1 className="font-bold text-2xl mb-3">{ module.name }</h1>
           <div
             dangerouslySetInnerHTML={{
               __html: module.description

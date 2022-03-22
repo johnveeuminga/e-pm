@@ -88,6 +88,10 @@ export default function Lesson({ auth, lesson, config, task, questions, flash, n
                       { lesson.name }
                     </p> 
                     <div dangerouslySetInnerHTML={{ __html: lesson.description }}></div>
+                    <div
+                      className='text-center'>
+                        <img src={lesson.media_url} className={'w-96 max-w-full'} alt="" />
+                    </div>
                   </div>
                 </div>
             </div> 
