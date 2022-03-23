@@ -45,7 +45,8 @@ class QuestionAttemptController extends Controller
         $eval = $question->questionOptions()
             ->where(function ($q) use ($attempt) {
                 $q->where('id', $attempt->answer)
-                ->orWhere('name', $attempt->answer);
+                ->orWhere('name', $attempt->answer)
+                ->orWhereRaw('CAST(name as DECIMAL(10, 3)) = CAST(? as DECIMAL(10, 3))', [$attempt->answer]);
             })
             ->first();
 
