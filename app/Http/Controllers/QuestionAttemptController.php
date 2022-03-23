@@ -27,6 +27,8 @@ class QuestionAttemptController extends Controller
 
         $question_attempt_answer->save();
 
+        // dd($question_attempt_answer->question->questionOptions()->where('name',$question_attempt_answer->answer)->first());
+
         $correct = $this->evaluate($question_attempt_answer);
 
         return back()->with('message', [
@@ -41,8 +43,10 @@ class QuestionAttemptController extends Controller
         $correct = false;
 
         $eval = $question->questionOptions()
-            ->where('id', $attempt->answer)
-            ->orWhere('name', $attempt->answer)
+            ->where(function ($q) use ($attempt) {
+                $q->where('id', $attempt->answer)
+                ->orWhere('name', $attempt->answer);
+            })
             ->first();
 
         $correct = $eval && $eval->is_correct;
