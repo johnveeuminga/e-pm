@@ -46,14 +46,8 @@ class Questions extends Model
 
         $condition = $this->max_attempts <= $this->userAttempts($user_id)->count() ||
             in_array($answer->id, $this->userAttempts($user_id)->get()->pluck('answer')->toArray()) ||
-            in_array($answer->name, $this->userAttempts($user_id)->get()->pluck('answer')->toArray()) ||
-            $this->userAttempts($user_id)->get()->every(function($attempt) use ($answer) {
-                if($answer)
-                    return abs(floatval($answer->name) - floatval($attempt->answer)) < PHP_FLOAT_EPSILON;
+            in_array($answer->name, $this->userAttempts($user_id)->get()->pluck('answer')->toArray());
 
-                return false;
-            });
-    
         return $condition;
     }
 }
