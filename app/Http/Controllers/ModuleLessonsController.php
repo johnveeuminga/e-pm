@@ -74,6 +74,7 @@ class ModuleLessonsController extends Controller
                     $q->where('user_id', $user->id);
                 },
                 'questionOptions' => function($q) use ($user) {
+
                     $questions_table = DB::table('questions')
                         ->selectRaw('questions.*, CASE WHEN true THEN 1 ELSE 0 END as `should_show_answers`')
                         ->whereIn('id', function($q) use ($user){
@@ -97,8 +98,8 @@ class ModuleLessonsController extends Controller
                                 ->select('question_attempt_answers.question_id')
                                 ->joinSub($correct_answers_join_sub, 'QA', function($join){
                                     $join->on('QA.qo_id', '=', 'question_attempt_answers.answer')
-                                        ->orOn('CAST(QA.name as DECIMAL(10, 3))', '=', 'CAST(question_attempt_answers.answer as DECIMAL(10, 3))')
-                                        ->orOn;
+                                        ->orOn('QA.name', '=', 'question_attempt_answers.answer')
+                                        ->orOn('CAST(QA.name as DECIMAL(10, 3))', '=', 'CAST(question_attempt_answers.answer AS DECIMAL(10, 3))');
                                 })
                                 ->where('user_id', $user->id);
                         });
