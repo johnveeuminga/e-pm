@@ -99,7 +99,7 @@ class ModuleLessonsController extends Controller
                                 ->joinSub($correct_answers_join_sub, 'QA', function($join){
                                     $join->on('QA.qo_id', '=', 'question_attempt_answers.answer')
                                         ->orOn('QA.name', '=', 'question_attempt_answers.answer')
-                                        ->orOn(DB::raw('CAST(QA.name as DECIMAL(10, 2)) = CAST(question_attempt_answers.answer as DECMAL(10, 3))'));
+                                        ->orOn(DB::raw('CAST(QA.name as DECIMAL(10, 2))'), '=', DB::raw('CAST(question_attempt_answers.answer as DECMAL(10, 3))'));
                                 })
                                 ->where('user_id', $user->id);
                         });
