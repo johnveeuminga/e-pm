@@ -44,6 +44,8 @@ class Questions extends Model
                     ->where('is_correct', 1)
                     ->first();
 
+        
+
         $condition = $this->max_attempts <= $this->userAttempts($user_id)->count() ||
             in_array($answer->id, $this->userAttempts($user_id)->get()->pluck('answer')->toArray()) ||
             in_array($answer->name, $this->userAttempts($user_id)->get()->pluck('answer')->toArray());
